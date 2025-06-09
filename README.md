@@ -415,7 +415,8 @@ Check out the [examples directory](examples) for more detailed examples:
 
 ## 🧪 Requirements
 
-- Ruby 3.2+
+- Ruby 3.1.7+
+- Rack 2.0.8+ (compatible with both Rack 2.x and 3.x)
 
 ## 👥 Contributing
 

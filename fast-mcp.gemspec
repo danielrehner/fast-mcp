@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.description = 'A flexible and powerful implementation of the MCP with multiple approaches for defining tools.'
   spec.homepage = 'https://github.com/yjacquin/fast_mcp'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 3.0.0'
+  spec.required_ruby_version = '>= 3.1.7'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage
@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'dry-schema', '~> 1.14'
   spec.add_dependency 'json', '~> 2.0'
   spec.add_dependency 'mime-types', '~> 3.4'
-  spec.add_dependency 'rack', '~> 3.1'
+  spec.add_dependency 'rack', '>= 2.0.8', '< 4'
 
   # Development dependencies are specified in the Gemfile
 end
