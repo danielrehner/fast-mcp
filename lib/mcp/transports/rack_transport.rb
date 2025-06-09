@@ -75,6 +75,7 @@ module FastMcp
 
         # Remove disconnected clients outside the loop to avoid modifying the hash during iteration
         clients_to_remove.each { |client_id| unregister_sse_client(client_id) }
+        [json_message]
       end
 
       # Register a new SSE client
