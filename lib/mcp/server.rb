@@ -131,7 +131,7 @@ module FastMcp
       @logger.info("Available resources: #{@resources.map(&:resource_name).join(', ')}")
 
       # Use Rack transport
-      transport_klass = FastMcp::Transports::AuthenticatedRackTransport
+      transport_klass = options.delete(:transport_class) || FastMcp::Transports::AuthenticatedRackTransport
       @transport = transport_klass.new(app, self, options.merge(logger: @logger))
       @transport.start
 

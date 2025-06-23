@@ -128,6 +128,7 @@ module FastMcp
   # @option options [Boolean] :authenticate Whether to use authentication
   # @option options [String] :auth_token The authentication token
   # @option options [Array<String,Regexp>] :allowed_origins List of allowed origins for DNS rebinding protection
+  # @option options [Class] :transport_class The transport class to use.
   # @yield [server] A block to configure the server
   # @yieldparam server [FastMcp::Server] The server to configure
   # @return [#call] The Rack middleware
@@ -153,12 +154,7 @@ module FastMcp
     yield self.server if block_given?
 
     # Choose the right middleware based on authentication
-    self.server.transport_klass = if authenticate
-                                    FastMcp::Transports::AuthenticatedRackTransport
-                                  else
-                                    FastMcp::Transports::RackTransport
-                                  end
-
+    self.server.transport_klass = options.delete(:transport_class) || (authenticate ? FastMcp::Transports::AuthenticatedRackTransport : FastMcp::Transports::RackTransport)
     # Insert the middleware in the Rails middleware stack
     app.middleware.use(
       self.server.transport_klass,
